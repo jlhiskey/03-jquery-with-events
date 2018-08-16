@@ -90,10 +90,10 @@ articleView.setTeasers = function() {
     if ($(this).hasClass('visible')) {
       $(this).removeClass('visible');
       $(this).text('Read on \u2192')
-      $('.article-body *:nth-of-type(n+2)').hide();
+      $(this).prev().find('*:nth-of-type(n+2)').hide();
     } else {
       $(this).addClass('visible');
-      $('.article-body *:nth-of-type(n+2)').show();
+      $(this).prev().find('*:nth-of-type(n+2)').show();
       $(this).text('\u2190 Show Less');
     }
   });
