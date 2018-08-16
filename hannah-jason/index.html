@@ -77,9 +77,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="scripts/blogArticles.js"></script>
   <script src="scripts/article.js"></script>
-  <!-- TODO: Link our new script file in. -->
+  <script src="scripts/articleView.js"></script>
 
   <!-- COMMENT: Explain the ordering of your script files. -->
-  <!-- PUT YOUR RESPONSE HERE -->
+  <!-- jQuery is first because the other script files depend on it. blogArticles.js is the database that the other scripts use, article.js uses the data in blogArticles to populate the page, and articleView relies on the data that has been populated to the page.  -->
 </body>
 </html>
