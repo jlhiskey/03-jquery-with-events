@@ -93,10 +93,10 @@ articleView.setTeasers = function() {
     if ($(this).hasClass('visible')) {
       $(this).removeClass('visible');
       $(this).text('Read on \u2192')
-      $(this).prev().find('*:nth-of-type(n+2)').hide();
+      $(this).parent().find('p:nth-of-type(n+2)').hide();
     } else {
       $(this).addClass('visible');
-      $(this).prev().find('*:nth-of-type(n+2)').show();
+      $(this).parent().find('p').show();
       $(this).text('\u2190 Show Less');
     }
   });
