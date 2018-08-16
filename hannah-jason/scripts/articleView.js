@@ -35,7 +35,8 @@ articleView.populateFilters = function() {
 };
 
 articleView.handleAuthorFilter = function() {
-  $('#author-filter').on('change', function() {
+  $('#author-filter').on('change', function(event) {
+    event.preventDefault();
     // REVIEW: Inside this function, "this" is the element that triggered the event handler function we are defining. "$(this)" is using jQuery to select that element (analogous to event.target that we have seen before), so we can chain jQuery methods onto it.
     if ($(this).val()) {
       // If the <select> menu was changed to an option that has a value, we first need to hide all the articles, and then show just the ones that match for the author that was selected.
@@ -57,7 +58,8 @@ articleView.handleCategoryFilter = function() {
   // When an option with a value is selected, hide all the articles, then reveal the matches.
   // When the blank (default) option is selected, show all the articles, except for the template.
   // Be sure to reset the #author-filter while you are at it!
-  $('#category-filter').on('change', function() {
+  $('#category-filter').on('change', function(event) {
+    event.preventDefault();
     if ($(this).val()) {
       $('article').hide();
       $('article').filter(`[data-category="${$(this).val()}"]`).show();
@@ -68,14 +70,14 @@ articleView.handleCategoryFilter = function() {
     }
     $('#author-filter').val('');
   });
-
 };
 
 articleView.handleMainNav = function() {
   //  Add an event handler to nav elements that will power the Tabs feature.
   // Clicking any .tab element should hide all the .tab-content sections, and then reveal the single .tab-content section that is associated with the clicked .tab element.
   // So: You need to dynamically build a selector string with the correct ID, based on the data available to you on the .tab element that was clicked.
-  $('.tab').on('click', function() {
+  $('.tab').on('click', function(event) {
+    event.preventDefault();
     $('.tab-content').hide();
     $(`#${$(this).attr('data-content')}`).show();
     // REVIEW: Now trigger a click on the first .tab element, to set up the page.
@@ -86,7 +88,8 @@ articleView.handleMainNav = function() {
 articleView.setTeasers = function() {
   // REVIEW: Hide elements beyond the first 2 in any article body.
   $('.article-body *:nth-of-type(n+2)').hide();
-  $('.read-on').on('click', function() { 
+  $('#articles').on('click', '.read-on', function(event) {
+    event.preventDefault();
     if ($(this).hasClass('visible')) {
       $(this).removeClass('visible');
       $(this).text('Read on \u2192')
